@@ -1,0 +1,28 @@
+# Default configuration for the Monte Carlo simulation.
+#
+# The question this answers: starting from an initial investment and saving a
+# fixed amount each year, what is the range of outcomes after N years, and how
+# likely am I to reach my target?
+
+plan:
+  initial_investment: 50000     # starting balance
+  annual_contribution: 12000    # added each year, spread evenly across the year
+  horizon_years: 20             # how far ahead to project
+  target_value: 500000          # the goal we want to reach
+
+model:
+  type: "gbm"                   # "gbm" (parametric) or "bootstrap" (resample history)
+  steps_per_year: 12            # monthly steps
+
+  # Used when type is "gbm":
+  annual_return: 0.07           # expected annual return
+  annual_volatility: 0.15       # annual volatility
+
+  # Used when type is "bootstrap":
+  ticker: "SPY"                 # history to resample from
+  history_start: "2005-01-01"
+  history_end: "2024-12-31"
+
+simulation:
+  n_paths: 10000                # number of simulated futures
+  seed: 42                      # for reproducible runs
