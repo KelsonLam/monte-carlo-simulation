@@ -31,7 +31,10 @@ volatility, target 500,000) with a fixed seed, so you can reproduce them exactly
 with `python scripts/run_simulation.py --save-plots`.
 
 The fan chart shows how the range of outcomes widens the further out you look.
-Uncertainty compounds:
+Uncertainty compounds, and this animation makes that growth visible as the
+projection marches forward year by year:
+
+![Animation of the Monte Carlo outcome cone widening over time](images/mc.gif)
 
 ![Fan chart of balance outcomes over time](images/fan_chart.png)
 
