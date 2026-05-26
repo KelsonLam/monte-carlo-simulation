@@ -119,6 +119,19 @@ python scripts/run_simulation.py --model bootstrap --years 30 --save-plots
 - **No inflation, taxes, or fees.** Balances are nominal and gross. For a real
   plan, those three matter and would all push outcomes down.
 
+## Block bootstrap
+
+The plain bootstrap draws one return at a time, throwing away any serial
+structure. `block_bootstrap.py` resamples contiguous blocks instead, so
+volatility clustering and streaks travel together into the simulated paths.
+
+```python
+from monte_carlo.block_bootstrap import BlockBootstrapModel
+model = BlockBootstrapModel(historical_monthly_returns, block_size=6)
+```
+
+Set `block_size=1` and it reduces to the ordinary bootstrap.
+
 ## Tests
 
 ```bash
